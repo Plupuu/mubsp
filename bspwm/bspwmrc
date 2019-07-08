@@ -1,0 +1,70 @@
+#! /bin/sh
+
+sxhkd &
+
+bspc monitor -d I II III IV V VI VII VIII 
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+# source the colors.
+. "${HOME}/.cache/wal/colors.sh"
+
+# Set the border colors.
+bspc config normal_border_color "$color2"
+bspc config active_border_color "$color1"
+bspc config focused_border_color "$color15"
+# Use the line below if you are on bspwm >= 0.9.4
+bspc config presel_feedback_color "$color1"
+# Use the line below if you are on bspwm < 0.9.4
+#bspc config presel_border_color "$color1"
+
+bspc rule -a Spotify desktop='^3' state=floating
+bspc rule -a spotify desktop='^3' state=floating
+bspc rule -a Spotify Free desktop='^3' state=floating
+
+bspc config external_rules_command "/home/plup/./rules"
+bspc rule -a 'qutebrowser' desktop='^1' focus=on follow=on 
+bspc rule -a 'VisualBoyAdvance-M' desktop='^8' state=pseudo_tiled focus=on follow=on rectangle=974x546+191+91
+bspc rule -a 'visualboyadvance-m' desktop='^8' state=pseudo_tiled focus=on follow=on rectangle=974x546+191+91
+bspc rule -a 'Visualboyadvance-m' desktop='^8' state=pseudo_tiled focus=on follow=on rectangle=974x546+191+91
+bspc rule -a 'snes9x-gtk' desktop='^8' state=pseudo_tiled focus=on follow=on rectangle=974x546+191+91
+bspc rule -a 'Snes9x-gtk' desktop='^8' state=pseudo_tiled focus=on follow=on rectangle=974x546+191+91
+bspc rule -a 'nestopia' desktop='^8' state=pseudo_tiled focus=on follow=on rectangle=510x444+191+91
+bspc rule -a 'Tilda' desktop='^3' state=floating
+bspc rule -a Gifview desktop='^3' state=floating
+bspc rule -a 'Gimp-2.10' desktop='^7' follow=on
+bspc rule -a krita desktop='^7' follow=on
+bspc rule -a Evince desktop='^2' focus=on follow=on state=pseudo_tiled rectangle=1110x634+123+47
+bspc rule -a 'Transmission-gtk' desktop='^6'
+bspc rule -a MineTime desktop='^4' 
+bspc rule -a 'mpv' desktop='^5' focus=on follow=on state=pseudo_tiled rectangle=500x500+428+150
+bspc rule -a Nemo desktop='^4' focus=on follow=on
+bspc rule -a Zathura desktop='^2' state=tiled focus=on follow=on
+bspc rule -a Thunar  desktop='^4' focus=on follow=on state=pseudo_tiled rectangle=974x546+191+91
+bspc rule -a 'Surf' desktop='^1' state=tiled focus=on follow=on
+bspc rule -a Firefox desktop='^1' focus=on follow=on
+bspc rule -a polybar sticky=on
+
+bspc rule -a Screenkey manage=off
+bspc config focus_follows_pointer true
+
+exec xset s off -dpms &
+exec xsetroot -cursor_name left_ptr &
+
+exec ./caps &
+touch ~/.hushlogin &
+$HOME/.config/polybar/launch.sh &
+sleep 2
+echo | awk '{ system("wal -R ")}';
+killall xwinwrap;
+exec xwinwrap -g 1360x768 -ni -s -nf -b -un -argb -fdt --  gifview -a -w WID /home/DiV/New/e.gif &
+sed -i '124s/8px/0px/g; 37s/0/8/g; 33s/2.5/0.2/g; 31s/@background/@foreground/g' /home/plup/.cache/wal/colors-rofi-dark.rasi &
+sleep 2
+exec udiskie &
+exec dunst 
+
