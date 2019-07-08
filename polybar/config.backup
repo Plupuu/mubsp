@@ -1,0 +1,395 @@
+2;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;==========================================================
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #1e1514
+background-alt = #444
+;foreground = ${xrdb:color7:#222}
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+
+[bar/plupbar]
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+;scroll-up = i3-msg workspace next_on_output
+;scroll-down = i3-msg workspace prev_on_output
+;monitor = ${env:MONITOR:HDMI-1}
+width = 96%
+height = 25
+offset-y = 3
+
+offset-x = 32 
+
+override-redirect = false
+wm-restack = bspwm
+
+border-top-size = 2 
+border-bottom-size = 2
+border-right-size = 2 
+border-left-size = 2
+border-color = ${xrdb:color2:#222}
+
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+
+### Add fonts
+;font-0 = fixed:pixelsize=10;1
+font-0 = "monospace:antialias-false:pixelsize=8.3;1"
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = Siji:pixelsize=10;1
+font-3 = FontAwesome:size=10;0
+font-4 = "Font Awesome 5 Free:style=Regular:size=10;3"
+font-5 = Font Awesome 5 Free:style=Solid:size=10;3
+font-6 = "Font Awesome 5 Brands:style=Regular:size=10;3"
+
+modules-left = bspwm 
+modules-center =  
+modules-right = network filesystem xbacklight   global xkeyboard memory cpu wlan eth mpd battery  system-cpu-temppercore  pulseaudio date powermenu
+
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${xrdb:color6:#222}
+
+label-layout = %layout%
+label-layout-underline = ${xrdb:color6:#ff}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+ 
+
+[module/i3]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 4
+
+label-occupied = %index%
+label-occupied-padding = 4
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+
+[module/bspwm]
+
+
+type = internal/bspwm
+
+ws-icon-0 = "I;"
+
+ws-icon-1 = "II;"
+
+ws-icon-2 = "III;"
+
+ws-icon-3 = "IV;"
+
+ws-icon-4 = "V;"
+
+ws-icon-6 = "VI;"
+
+ws-icon-7 = "VII;"
+
+ws-icon-8 = "VIII;"
+
+ws-icon-9 = "IX;"
+
+ws-icon-10 = "X;"
+
+ws-icon-5 = "VI;&lt;insert-icon-here&gt;"
+
+;ws-icon-6 = "VII;&lt;insert-icon-here&gt;"
+
+;ws-icon-7 = "VIII;&lt;insert-icon-here&gt;"
+
+;ws-icon-8 = "IX;&lt;insert-icon-here&gt;"
+
+;ws-icon-9 = "X;&lt;insert-icon-here&gt;"
+
+ws-icon-default = 
+
+
+label-focused = %icon% 
+
+label-focused-background = ${colors.background-alt}
+
+label-focused-underline= ${xrdb:color7:#222}
+
+label-focused-padding = 5
+
+label-occupied = %icon% 
+
+label-occupied-padding = 5
+
+label-urgent = %icon% 
+
+label-urgent-background = ${colors.alert}
+
+label-urgent-padding = 4
+
+label-urgent-underline = ${xrdb:color2:#222}
+
+label-empty = •
+
+;label-empty-foreground = ${colors.foreground-alt}
+
+label-empty-foreground = #afafaf
+
+label-empty-padding = 2
+
+strip-wsnumbers = false
+
+; Separator in between workspaces
+
+; label-separator = |
+
+[module/system-cpu-temppercore]
+type = custom/script
+format-prefix = " "
+exec = ~/polybar-scripts/system-cpu-temppercore.sh
+format-underline = ${xrdb:color2:#222}
+
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = ""
+format-prefix-foreground = #ff
+format-underline = ${xrdb:color5:#222}
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 1
+format-prefix = " "
+format-prefix-foreground = #ff
+format-underline = ${xrdb:color4:#222}
+label = %percentage_used%%
+
+ 
+[module/network]
+type = internal/network
+interface = enp1s0
+interval = 0.9
+
+label-connected = %{F#ff}%{F#ff} %upspeed% | %{F#ff} %{F#ff}%downspeed%
+label-connected-prefix = 22
+label-disconnected = %{F#66}%ifname% 
+label-disconnected-foreground = #aa
+udspeed-minwidth = 3
+
+[module/mpv]
+type = custom/script
+format-prefix = " "
+interval = 0.1
+exec = xwininfo -root -children | grep mpv | cut -d'"'  -f2 | tr -d ''mpv','.mkv','-''
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-prefix-foreground = #ff
+format-underline = ${xrdb:color7:#222}
+
+label = %date% %time%
+
+[module/pulseaudio]
+type                  = internal/volume
+
+format-volume-padding = 1
+format-muted-padding  = 1
+format-volume         = <ramp-volume>  <label-volume>
+label-volume          = %percentage%%
+
+label-muted           = 
+ramp-volume-0         = 
+ramp-volume-1         = 
+ramp-volume-2         = 
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close = NOT!
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = 
+menu-0-0-exec = menu-open-1
+menu-0-1 = 
+menu-0-1-exec = menu-open-2
+menu-0-2 = 
+menu-0-2-exec = menu-open-3
+
+menu-1-1 = 
+menu-1-0-exec =  ReBooT
+menu-1-0 = 
+menu-1-1-exec = menu-open-0
+
+menu-2-0 = 
+menu-2-0-exec = PowerOff
+menu-2-1 = 
+menu-2-1-exec = menu-open-0
+
+menu-3-0 = suspend
+menu-3-0-exec = pm-suspend
+menu-3-1 = back
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
+
+
