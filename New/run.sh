@@ -11,9 +11,10 @@ do
 	    "; echo convert -strip " $0 "[0]" " " $0 "| sed 's/...$/png/'"\
 	    " | sh;" "echo "$0 " | sed 's/...$/png/' | "\
 	    "xargs -i betterlockscreen -u {}")}' ;
+    
+    echo "$gif" | awk '{system("echo mv "$0 "|  sed 's/...$/png/'" "; echo /home/DiV/New/png/"$0"|  sed 's/...$/png/'")}' | paste -sd " " | sh;
 
-	sed -i '65d' /home/plup/.config/bspwm/bspwmrc ;
 
-    echo xwinwrap -g 1360x768 -ni -s -nf -b -un -argb -fdt --  gifview -w WID -a | sed -i "65i exec xwinwrap -g 1360x768 -ni -s -nf -b -un -argb -fdt --  gifview -a -w WID /home/DiV/New/$gif &"    /home/plup/.config/bspwm/bspwmrc
+    sed -i "68c exec xwinwrap -g 1360x768 -ni -s -nf -b -un -argb -fdt --  gifview -a -w WID /home/DiV/New/$gif &"    /home/plup/.config/bspwm/bspwmrc
 
     done
